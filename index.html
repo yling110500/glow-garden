@@ -1,0 +1,654 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#f5f3e9"><meta name="description" content="把一点微光，种成一座花园。20关安静的滑动解谜，随时停下，慢慢开花。">
+<title>微光花园 · Glow Garden</title><link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='18' fill='%232f5141'/%3E%3Cpath d='M32 48V24M32 36Q10 36 14 17Q34 16 32 36M32 29Q35 9 52 13Q51 32 32 29' stroke='%23f2d897' fill='%23f2d897'/%3E%3C/svg%3E">
+<style>:root{--paper:#f5f3e9;--ink:#263f34;--muted:#7a8375;--green:#2e5140;--line:#dadfd0;--gold:#d8b66f;--soft:#e9ebdd;--serif:"Songti SC","Noto Serif CJK SC","STSong",serif}*{box-sizing:border-box}html{background:var(--paper);color:var(--ink);font-family:-apple-system,BlinkMacSystemFont,"Segoe UI","PingFang SC","Microsoft YaHei",sans-serif}body{margin:0;background:radial-gradient(ellipse at 80% 30%,#e7eadb70,transparent 55%);min-height:100svh}button{font:inherit;cursor:pointer;color:inherit;border:0;background:none;-webkit-tap-highlight-color:transparent;touch-action:manipulation}button:focus-visible{outline:3px solid #b68c42;outline-offset:5px}button:disabled{opacity:.35;cursor:default}svg{width:24px;height:24px;display:block}.svg-library{width:0;height:0;position:absolute;overflow:hidden}h1,h2,h3,p{margin:0}.shell{max-width:1200px;margin:0 auto;padding:0 44px}.topbar{height:112px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.brand{display:flex;gap:12px;text-align:left;align-items:center;font-size:21px;letter-spacing:2px;font-weight:600;padding:0}.brand-icon{width:43px;height:43px;background:var(--green);border-radius:50% 50% 42% 50%;color:#e1d9b8;display:grid;place-items:center}.brand-icon svg{width:28px;height:28px}.brand small{display:block;letter-spacing:2.5px;font-size:8px;font-weight:500;margin-top:5px}.topbar nav{display:flex;align-items:center;gap:26px}.nav-link{font-size:13px;min-height:44px}.nav-link span{margin-left:8px;color:var(--muted)}.icon-button{min-width:44px;min-height:44px;border:1px solid var(--line);border-radius:50%;display:grid;place-items:center;font-size:27px}.sound-toggle{position:relative}.sound-toggle svg{width:18px}.mute-mark{width:25px;height:1px;background:var(--ink);position:absolute;transform:rotate(-45deg)}[aria-pressed="true"] .mute-mark{display:none}.eyebrow{font-size:10px;letter-spacing:3px;font-weight:600;color:var(--muted);display:flex;align-items:center;gap:10px}.eyebrow:before{content:"";width:22px;height:1px;background:currentColor}.home{padding-top:54px}.hero{display:grid;grid-template-columns:1fr 1fr;align-items:center;gap:42px;min-height:480px}.hero-copy{padding-bottom:22px}.hero h1{font-family:var(--serif);font-size:clamp(36px,4.2vw,58px);line-height:1.5;font-weight:500;letter-spacing:1px;margin:24px 0 18px}.hero h1 em{font-style:normal;color:#718260}.hero-description{font-size:14px;line-height:2.1;color:var(--muted);letter-spacing:.6px}.hero-actions{display:flex;gap:14px;margin-top:30px;align-items:center}.primary{background:var(--green);color:#faf6e9;min-height:54px;padding:0 25px;border-radius:30px;display:inline-flex;align-items:center;justify-content:center;gap:28px;font-size:14px;letter-spacing:1px;box-shadow:0 7px 18px #294b3212;transition:background .2s,transform .2s}.primary:hover{background:#3c654e;transform:translateY(-2px)}.primary svg{width:19px}.secondary{border:1px solid #bfc9b9;border-radius:30px;min-height:54px;padding:0 22px;font-size:13px}.secondary:hover{background:var(--soft)}.home-meta{margin-top:22px;display:flex;gap:16px;font-size:11px;color:var(--muted);letter-spacing:.5px}.home-meta span+span:before{content:"·";margin-right:16px}.hero-art{position:relative;height:465px;background:#e4e9d9;border-radius:47% 47% 24px 24px;isolation:isolate;display:flex;align-items:center;justify-content:center;overflow:hidden}.art-ring{position:absolute;width:340px;height:340px;border:1px solid #c6cfb8;border-radius:50%;top:35px;left:50%;transform:translateX(-50%)}.art-ring:after{content:"";position:absolute;inset:20px;border-radius:50%;border:1px dashed #cad3bd}.art-caption{position:absolute;bottom:26px;left:0;right:0;text-align:center;font-size:11px;letter-spacing:2px;color:#748369}.art-badge{position:absolute;top:30px;left:50%;transform:translateX(-50%);white-space:nowrap;font-size:9px;letter-spacing:2px;color:#697a5b}.art-moon{position:absolute;top:37px;right:49px;width:32px;height:32px;border-radius:50%;background:#faf7df;box-shadow:0 0 32px #faf7df}.mini-garden{width:280px;height:280px;display:grid;grid-template-columns:repeat(5,1fr);transform:rotate(-12deg);gap:6px;padding:10px;background:#4d6a4b;border-radius:20px;box-shadow:0 14px 0 #3e583c,0 32px 38px #4c654632;z-index:2}.mini-tile{border-radius:9px;background:#6b8558;display:grid;place-items:center;box-shadow:inset 0 2px 0 #90a475;position:relative}.mini-tile svg{width:41px;height:41px;color:#f2e4af;filter:drop-shadow(0 3px 1px #203a3826)}.mini-tile:nth-child(3n) svg{color:#e4b4a2}.mini-tile.empty{background:#3e593f;box-shadow:none}.mini-tile.empty:after{content:"";width:11px;height:20px;border-radius:100% 0 100% 0;background:#567449;transform:rotate(25deg)}.mini-tile.dark{background:#547047}.mini-tile.dark:after{content:"";width:4px;height:4px;border-radius:50%;background:#82936b}.mini-tile .mini-seed{width:27px;height:27px;border-radius:50%;background:#ffe9a6;box-shadow:0 0 24px #ffe9a6b8,0 3px 3px #46632b}.botanical{position:absolute;width:125px;height:200px;color:#94a78380;z-index:0}.botanical.left{left:-23px;bottom:20px;transform:rotate(-30deg)}.botanical.right{right:-24px;top:130px;transform:rotate(35deg)}.floating-spark{position:absolute;font-size:22px;color:#fffbea;animation:float 5s ease-in-out infinite;z-index:3}.spark1{left:45px;top:150px}.spark2{right:44px;bottom:100px;animation-delay:-2s}.chapter-strip{margin-top:45px;padding:24px 0;display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);gap:18px}.chapter{display:flex;gap:13px;align-items:center}.chapter-number{font-family:Georgia,serif;font-size:26px;color:#a6ad99;font-style:italic}.chapter strong{font-size:13px;font-weight:500;display:block}.chapter small{font-size:10px;color:var(--muted);display:block;margin-top:7px;letter-spacing:.5px}.site-footer{display:flex;justify-content:space-between;align-items:center;padding:27px 0;font-size:10px;letter-spacing:1px;color:#969d8e}.site-footer span:last-child{font-size:8px;letter-spacing:2px}.footer-dot{font-size:18px!important;display:inline-block;margin-left:8px;vertical-align:middle}.game{padding:32px 0 0}.game-top{display:flex;justify-content:space-between;align-items:center;margin-bottom:25px}.back-link{display:flex;gap:7px;align-items:center;font-size:12px;min-height:44px;padding:0}.back-link svg{width:17px;transform:rotate(180deg)}.chapter-pill{min-height:44px;font-size:10px;letter-spacing:1px;padding:8px 13px;border:1px solid #cbd3c1;border-radius:20px}.game-layout{display:grid;grid-template-columns:1fr 490px;gap:65px;align-items:center}.level-kicker{font-size:11px;color:var(--muted);letter-spacing:2px}.level-heading{font-family:var(--serif);font-size:39px;font-weight:500;line-height:1.45;margin:14px 0 18px}.level-heading span{display:block;font-family:Georgia,serif;font-style:italic;color:#b0b99e;font-size:64px;line-height:1;margin-bottom:18px}.level-intent{max-width:290px;font-size:14px;line-height:2;color:var(--muted)}.level-stats{display:flex;gap:36px;margin:32px 0}.stat label{display:block;font-size:10px;letter-spacing:1px;color:var(--muted);margin-bottom:8px}.stat strong{font-family:Georgia,serif;font-size:28px;font-weight:400}.stat strong small{font-family:inherit;font-size:16px;color:#9aa58d}.garden-progress{height:3px;background:#dfe4d4;border-radius:3px;max-width:290px}.garden-progress span{display:block;height:100%;background:#759267;transition:width .2s}.legend{margin-top:25px;display:flex;gap:17px;font-size:11px;color:var(--muted)}.legend span{display:flex;gap:6px;align-items:center}.legend i{display:inline-block;width:10px;height:10px;border-radius:50%;background:#e9c880}.legend .stop-dot{background:#9ac8c3;box-shadow:inset 0 0 0 3px #c9e4de}.game-card{background:#e5e9da;border-radius:28px;padding:22px;box-shadow:0 14px 40px #45523e08}.board-head{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:#78886b;margin-bottom:18px;letter-spacing:1px}.board-head svg{width:17px;height:17px;color:#74876a}.garden-frame{background:#3e5840;border-radius:22px;padding:13px;box-shadow:0 7px 0 #304b35,inset 0 1px 0 #718261;position:relative}.board{position:relative;width:100%;display:grid;grid-template-columns:repeat(var(--cols),minmax(0,1fr));grid-template-rows:repeat(var(--rows),minmax(0,1fr));aspect-ratio:var(--cols)/var(--rows);touch-action:none;user-select:none;-webkit-user-select:none;outline-offset:10px}.tile{margin:4px;border-radius:11px;background:#536b46;display:grid;place-items:center;position:relative;min-width:0;min-height:0;box-shadow:inset 0 1px 0 #6f8155,0 2px 0 #334d32}.tile .bud{width:5px;height:5px;background:#7e9168;border-radius:50%}.tile.blocked{background:transparent;box-shadow:none}.tile.blocked:after{content:"";width:22%;height:34%;border-radius:100% 0 100% 0;background:#4b6547;transform:rotate(25deg)}.tile.blocked:nth-child(3n):after{transform:rotate(100deg);background:#506c48}.tile.lit{background:#78905a;box-shadow:inset 0 2px 0 #95a975,0 2px 0 #415f38}.tile .flower{width:75%;height:75%;color:#f4e5b1;filter:drop-shadow(0 2px 1px #31483133)}.tile:nth-child(3n) .flower{color:#e5b6a3}.tile.just-lit .flower{animation:bloom .3s ease-out}.tile.stop:before{content:"";position:absolute;inset:18%;border:2px solid #b3ddd3;border-radius:50%;opacity:.9;box-shadow:0 0 9px #c3fff438;z-index:1}.tile.stop.lit:before{inset:8%;opacity:.65}.seed{position:absolute;width:calc(58% / var(--cols));aspect-ratio:1;left:calc((var(--x) + .5) * 100% / var(--cols));top:calc((var(--y) + .5) * 100% / var(--rows));border-radius:50%;background:radial-gradient(circle at 35% 30%,#fff7d2,#f0c66c);box-shadow:0 0 18px #ffe0a1b0,0 3px 4px #243e3933;transform:translate(-50%,-50%);transition:left .075s linear,top .075s linear;z-index:4;pointer-events:none}.seed:before{content:"";width:38%;height:24%;border-radius:0 100% 0 100%;background:#bdd399;position:absolute;top:-12%;left:47%;transform:rotate(-25deg)}.seed:after{content:"";position:absolute;inset:-20%;border-radius:50%;border:1px solid #ffedb65c;animation:pulse 2.5s ease-in-out infinite}.board-hint{min-height:42px;display:flex;align-items:center;justify-content:center;text-align:center;margin:13px 0 0;font-size:11px;line-height:1.7;color:#66775c;letter-spacing:.3px}.direction-pad{display:flex;gap:9px;justify-content:center;padding:4px 0 14px}.direction-pad button{width:58px;height:45px;background:#f1f2e8;border:1px solid #cbd4be;border-radius:13px;display:grid;place-items:center;transition:background .15s,transform .15s}.direction-pad button:hover{background:#fffdf0}.direction-pad button:active,.direction-pad button.hinted{background:#e9d9a5;transform:translateY(2px)}.direction-pad svg{width:20px}.tools{display:flex;justify-content:space-around;border-top:1px solid #cbd4be;padding-top:12px}.tools button{display:flex;gap:7px;align-items:center;justify-content:center;font-size:11px;min-width:78px;min-height:44px}.tools svg{width:17px;height:17px}.screen-enter{animation:enter .35s ease-out}.board.bump{animation:bump .18s ease}.result{max-width:560px;text-align:center;margin:40px auto 0;padding:10px 0 26px}.result .eyebrow{justify-content:center}.result .eyebrow:after{content:"";width:22px;height:1px;background:currentColor}.result-art{width:186px;height:186px;border-radius:50%;margin:25px auto 18px;background:#e5ead8;display:grid;place-items:center;position:relative}.result-art:before{content:"";position:absolute;inset:10px;border:1px dashed #bfcaae;border-radius:50%}.result-art svg{width:128px;height:128px;color:#f6e0a5;filter:drop-shadow(0 6px 3px #55703e22)}.result-art .result-spark{position:absolute;color:#8ca572;font-size:30px;right:-5px;top:35px}.result h1{font-family:var(--serif);font-size:36px;font-weight:500;letter-spacing:2px}.result-subtitle{color:var(--muted);font-size:13px;line-height:1.9;margin:12px 0}.stars{display:flex;align-items:center;justify-content:center;gap:13px;margin:22px 0;color:#d5b062}.stars svg{width:29px;height:29px}.stars svg:nth-child(2){width:36px;height:36px}.stars .unearned{color:#dce1d3}.result-stats{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line);padding:20px 0;margin:22px 0 26px}.result-stats strong{font-family:Georgia,serif;font-weight:400;font-size:28px;display:block}.result-stats span{font-size:10px;color:var(--muted);display:block;margin-top:7px}.result-actions{display:flex;justify-content:center;gap:13px}.result-note{font-size:11px;color:var(--muted);margin-top:20px;line-height:1.8}.small-link{font-size:12px;text-decoration:underline;text-underline-offset:5px;min-height:44px;margin-top:10px}dialog{border:0;padding:0;border-radius:24px;background:var(--paper);color:var(--ink);max-width:580px;width:calc(100% - 32px);max-height:85svh;box-shadow:0 20px 90px #152a3840}dialog::backdrop{background:#1e362d7a;backdrop-filter:blur(5px)}.modal-content{padding:26px}.modal-head{display:flex;justify-content:space-between;align-items:center;gap:15px;margin-bottom:20px}.modal-head h2{font-family:var(--serif);font-weight:500;font-size:25px}.modal-intro{font-size:12px;line-height:1.9;color:var(--muted);margin-bottom:24px}.level-group{margin-top:20px}.level-group h3{font-size:12px;font-weight:500;margin-bottom:12px}.level-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:9px}.level-tile{border:1px solid var(--line);background:#e9eddf;border-radius:13px;min-height:66px;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;font-family:Georgia,serif;font-size:20px}.level-tile:hover{background:#dfe7d2}.level-tile.completed{background:#d8e3c9;border-color:#b8c9a6}.level-tile small{font-size:10px;letter-spacing:1px;color:#ad8f50;min-height:12px}.help-step{display:flex;gap:15px;margin:24px 0;align-items:flex-start}.help-step b{font-family:Georgia,serif;font-size:25px;font-weight:400;color:#9da98c}.help-step strong{font-size:14px;font-weight:500;display:block;margin:2px 0 8px}.help-step p{font-size:12px;color:var(--muted);line-height:1.9}.help-footer{font-size:11px;color:var(--muted);border-top:1px solid var(--line);padding-top:18px;line-height:1.9}#toast{position:fixed;left:50%;bottom:28px;transform:translate(-50%,20px);opacity:0;pointer-events:none;background:#2c493df0;color:#f5f3e7;padding:13px 22px;border-radius:25px;font-size:12px;max-width:90vw;text-align:center;z-index:20;transition:opacity .2s,transform .2s}#toast.visible{opacity:1;transform:translate(-50%,0)}@keyframes float{50%{transform:translateY(-10px)}}@keyframes bloom{from{transform:scale(.25) rotate(-15deg);opacity:.4}to{transform:scale(1) rotate(0);opacity:1}}@keyframes pulse{50%{transform:scale(1.18);opacity:.35}}@keyframes enter{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:translateY(0)}}@keyframes bump{25%{transform:translateX(-3px)}75%{transform:translateX(3px)}}
+@media(max-width:950px){.shell{padding:0 28px}.game-layout{grid-template-columns:1fr 430px;gap:30px}.hero{gap:22px}.hero-art{height:410px}.mini-garden{width:240px;height:240px}.hero h1{font-size:41px}.hero-description{font-size:13px}.hero-actions{gap:9px}.primary{gap:17px;padding:0 20px}.secondary{padding:0 16px}.level-heading{font-size:32px}}
+@media(max-width:720px){.shell{padding:0 23px}.topbar{height:88px}.brand{font-size:18px;gap:9px}.brand-icon{width:35px;height:35px}.brand-icon svg{width:24px;height:24px}.brand small{font-size:7px;letter-spacing:2px}.topbar nav{gap:11px}.nav-link{font-size:11px}.icon-button{min-width:44px;min-height:44px}.home{padding-top:30px}.hero{display:flex;flex-direction:column;gap:27px;min-height:0}.hero-copy{width:100%;padding:0}.hero .eyebrow{font-size:8px;letter-spacing:2.2px}.hero h1{font-size:39px;line-height:1.4;margin:17px 0 13px}.hero-description{font-size:12px;line-height:1.9}.hero-description br{display:none}.hero-actions{margin-top:22px}.hero-actions .primary{flex:1}.hero-actions .secondary{flex:.7}.primary,.secondary{min-height:51px;font-size:12px}.home-meta{margin-top:16px;font-size:9px;gap:12px}.home-meta span+span:before{margin-right:12px}.hero-art{width:100%;height:320px;border-radius:44% 44% 20px 20px}.mini-garden{width:207px;height:207px;padding:8px;gap:5px;border-radius:15px;box-shadow:0 10px 0 #3e583c,0 24px 26px #4c654632}.mini-tile{border-radius:6px}.mini-tile svg{width:29px;height:29px}.art-ring{width:250px;height:250px;top:22px}.art-badge{font-size:7px;top:23px;left:50%}.art-caption{bottom:15px;font-size:9px}.art-moon{top:30px;right:37px;width:24px;height:24px}.botanical{width:95px;height:155px}.spark1{left:30px;top:110px}.spark2{right:28px;bottom:70px}.chapter-strip{margin-top:28px;padding:19px 0;grid-template-columns:repeat(2,1fr);row-gap:20px}.chapter-number{font-size:23px}.chapter strong{font-size:11px}.chapter small{font-size:8px;margin-top:5px}.site-footer{font-size:8px;padding:23px 0}.site-footer span:last-child{font-size:6px;letter-spacing:1px}.game{padding-top:10px}.game-top{margin-bottom:10px}.game-layout{display:flex;flex-direction:column;gap:20px;align-items:stretch}.level-info{position:relative;padding:0 2px}.level-kicker{font-size:9px;letter-spacing:1px}.level-heading{font-size:26px;margin:7px 0 8px;display:flex;align-items:baseline;gap:10px}.level-heading span{display:inline;font-size:30px;margin:0}.level-intent{font-size:11px;max-width:none;line-height:1.8;padding-right:3px;min-height:20px}.level-stats{position:absolute;right:2px;top:0;margin:0;gap:18px}.stat label{font-size:8px;margin-bottom:5px}.stat strong{font-size:21px}.stat strong small{font-size:12px}.garden-progress{margin-top:13px;max-width:none}.legend{display:none}.game-card{padding:15px;border-radius:22px}.board-head{font-size:8px;margin-bottom:12px}.garden-frame{padding:8px;border-radius:17px}.tile{margin:3px;border-radius:8px}.board-hint{font-size:10px;min-height:37px;margin-top:10px}.direction-pad{gap:10px;padding:1px 0 10px}.direction-pad button{width:54px;height:44px;border-radius:12px}.tools{padding-top:6px}.tools button{font-size:10px;gap:6px}.game+.site-footer{margin:0}.result{margin-top:30px}.result-art{width:155px;height:155px;margin:20px auto}.result-art svg{width:106px;height:106px}.result h1{font-size:30px}.result-subtitle{font-size:11px}.result-actions{gap:10px}.result-stats{padding:17px 0}.result-stats strong{font-size:25px}.modal-content{padding:21px}.level-grid{gap:6px}.level-tile{min-height:59px;font-size:18px}}
+@media(max-width:360px){.shell{padding:0 16px}.hero h1{font-size:34px}.game-card{padding:11px}.level-heading{font-size:22px}.level-stats{gap:12px}.level-intent{font-size:10px}.brand{font-size:16px}.hero-art{height:290px}.mini-garden{width:190px;height:190px}.modal-content{padding:17px}.topbar nav{gap:6px}}
+@media(prefers-reduced-motion:reduce){*,*:before,*:after{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+</style>
+</head>
+<body>
+<svg class="svg-library" aria-hidden="true"><defs>
+<symbol id="sprout" viewBox="0 0 40 40"><path d="M20 34V17" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/><path d="M20 25C7 26 6 17 7 11C17 10 23 15 20 25ZM21 19C20 8 27 4 35 6C36 15 30 21 21 19Z" fill="currentColor"/></symbol>
+<symbol id="bloom" viewBox="0 0 48 48"><path d="M24 31V44M24 39C12 40 12 32 12 32C22 31 24 39 24 39M24 37C34 38 36 29 36 29C26 29 24 37 24 37" fill="#b1c7a1" stroke="#b1c7a1" stroke-width="1.5"/><g fill="currentColor"><ellipse cx="24" cy="13" rx="5" ry="9"/><ellipse cx="24" cy="13" rx="5" ry="9" transform="rotate(72 24 22)"/><ellipse cx="24" cy="13" rx="5" ry="9" transform="rotate(144 24 22)"/><ellipse cx="24" cy="13" rx="5" ry="9" transform="rotate(216 24 22)"/><ellipse cx="24" cy="13" rx="5" ry="9" transform="rotate(288 24 22)"/></g><circle cx="24" cy="22" r="5" fill="#d4a958"/></symbol>
+<symbol id="star" viewBox="0 0 24 24"><path d="m12 2 3 6.3 7 .9-5 5 1.2 7-6.2-3.4-6.2 3.4 1.2-7-5-5 7-.9Z" fill="currentColor"/></symbol>
+<symbol id="arrow" viewBox="0 0 24 24"><path d="M5 12h14m-6-6 6 6-6 6" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="sound" viewBox="0 0 24 24"><path d="m11 5-5 4H3v6h3l5 4V5Zm4 3c2 2 2 6 0 8m3-11c4 4 4 10 0 14" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="undo" viewBox="0 0 24 24"><path d="m8 5-5 5 5 5M3 10h11a6 6 0 0 1 0 12" transform="translate(0 -2)" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="restart" viewBox="0 0 24 24"><path d="M19 9a8 8 0 1 0 1 7M19 3v6h-6" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+<symbol id="hint" viewBox="0 0 24 24"><path d="M9 17c0-3-4-3-4-8a7 7 0 0 1 14 0c0 5-4 5-4 8H9Zm0 3h6m-5 3h4" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round"/></symbol>
+</defs></svg>
+<div class="shell">
+<header class="topbar"><button class="brand" data-action="home" aria-label="微光花园首页"><span class="brand-icon"><svg><use href="#sprout"/></svg></span><span>微光花园<small>GLOW GARDEN</small></span></button><nav aria-label="主要导航"><button class="nav-link" data-action="help">怎么玩 <span>↗</span></button><button class="sound-toggle icon-button" data-action="sound" aria-label="开启声音" aria-pressed="false"><svg><use href="#sound"/></svg><span class="mute-mark"></span></button></nav></header>
+<main id="app"></main>
+<footer class="site-footer"><span>一小片花园，一段慢时光。</span><span>MADE TO BLOOM <span class="footer-dot">✳</span></span></footer>
+</div>
+<dialog id="modal" aria-labelledby="modal-title"><div class="modal-content"><div class="modal-head"><h2 id="modal-title"></h2><button data-action="close" class="icon-button" aria-label="关闭">×</button></div><div id="modal-body"></div></div></dialog>
+<div id="toast" role="status" aria-live="polite"></div>
+<noscript>请开启 JavaScript 以游玩微光花园。</noscript>
+<script>/* Pure game rules. Coordinates and masks are shared by rendering and the solver. */
+(function (root) {
+'use strict';
+const directions = { up:[0,-1], right:[1,0], down:[0,1], left:[-1,0] };
+function createBoard(rows) {
+ if (!Array.isArray(rows) || !rows.length || !rows[0].length || rows.some(r=>typeof r!=='string'||r.length!==rows[0].length||/[^#.SO]/.test(r))) throw Error('Invalid rectangular board');
+ const width=rows[0].length, height=rows.length, cells=[], lookup=new Map(); let start=-1, starts=0;
+ rows.forEach((row,y)=>[...row].forEach((type,x)=>{if(type!=='#'){const id=cells.length; cells.push({id,x,y,stop:type==='O'}); lookup.set(y*width+x,id); if(type==='S'){start=id;starts++;}}}));
+ if(starts!==1 || cells.length>30) throw Error('Board needs one start and at most 30 walkable cells');
+ const fullMask=2**cells.length-1;
+ const moves=cells.map(cell=>Object.fromEntries(Object.entries(directions).map(([name,[dx,dy]])=>{
+  let x=cell.x,y=cell.y,mask=0; const path=[];
+  while(true){x+=dx;y+=dy;if(x<0||x>=width||y<0||y>=height)break;const id=lookup.get(y*width+x);if(id===undefined)break;path.push(id);mask|=1<<id;if(cells[id].stop)break;}
+  return [name,{path,mask,position:path.length?path[path.length-1]:cell.id}];
+ })));
+ return {rows,width,height,cells,lookup,start,fullMask,moves};
+}
+function createState(board){return {position:board.start,mask:1<<board.start,steps:0,complete:board.cells.length===1,path:[],moved:false};}
+function slide(board,state,direction){
+ const move=board.moves[state.position]?.[direction];
+ if(!move||!move.path.length||state.complete)return {...state,path:[],moved:false};
+ const mask=state.mask|move.mask;
+ return {position:move.position,mask,steps:state.steps+1,complete:mask===board.fullMask,path:move.path.slice(),moved:true};
+}
+function count(mask){let n=0;while(mask){mask&=mask-1;n++;}return n;}
+function solve(board,state,maxStates=120000){
+ if(state.mask===board.fullMask)return [];
+ const queue=[{position:state.position,mask:state.mask,parent:-1,direction:null}]; const seen=new Set([state.mask*32+state.position]);
+ for(let head=0;head<queue.length&&head<maxStates;head++){
+  const current=queue[head];
+  for(const [direction,move] of Object.entries(board.moves[current.position])){
+   if(!move.path.length)continue;
+   const mask=current.mask|move.mask,key=mask*32+move.position;
+   if(seen.has(key))continue;seen.add(key);
+   const next={position:move.position,mask,parent:head,direction};
+   if(mask===board.fullMask){const route=[direction];let node=current;while(node.parent!==-1){route.push(node.direction);node=queue[node.parent];}return route.reverse();}
+   queue.push(next);
+  }
+ }
+ return null;
+}
+function stars(steps,par){return steps<=par?3:steps<=par+Math.max(3,Math.ceil(par*.35))?2:1;}
+function cleanSave(raw){
+ const save={version:2,best:{},last:0,sound:false};
+ if(!raw||typeof raw!=='object')return save;
+ if(raw.best&&typeof raw.best==='object') for(const [key,value]of Object.entries(raw.best))if(/^(?:[0-9]|1[0-9])$/.test(key)&&Number.isInteger(value)&&value>0&&value<100000&&(raw.version===2||Number(key)<11))save.best[key]=value;
+ if(Number.isInteger(raw.last)&&raw.last>=0&&raw.last<20)save.last=raw.last;
+ save.sound=raw.sound===true;return save;
+}
+function recordWin(raw,index,steps){const save=cleanSave(raw);if(Number.isInteger(index)&&index>=0&&index<20&&Number.isInteger(steps)&&steps>0){save.best[index]=Math.min(save.best[index]??Infinity,steps);save.last=Math.min(index+1,19);}return save;}
+const api={directions,createBoard,createState,slide,count,solve,stars,cleanSave,recordWin};
+if(typeof module!=='undefined'&&module.exports)module.exports=api;else root.GardenEngine=api;
+})(typeof window!=='undefined'?window:globalThis);
+</script>
+<script>/* Fixed campaign. Every dew has proven counterfactual value. */
+(function(root){const levels=[
+  {
+    "id": 1,
+    "name": "初见微光",
+    "chapter": 0,
+    "intent": "只需向右、向下，让第一条小径开花。",
+    "rows": [
+      "S..",
+      "##.",
+      "##."
+    ],
+    "par": 2,
+    "solution": [
+      "right",
+      "down"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "顺着风走",
+    "chapter": 0,
+    "intent": "一次滑动会一直走到尽头。",
+    "rows": [
+      "S...",
+      "###.",
+      "...."
+    ],
+    "par": 3,
+    "solution": [
+      "right",
+      "down",
+      "left"
+    ]
+  },
+  {
+    "id": 3,
+    "name": "绕过青石",
+    "chapter": 0,
+    "intent": "借着边界转弯，沿外圈走一走。",
+    "rows": [
+      "S...",
+      ".##.",
+      "...."
+    ],
+    "par": 4,
+    "solution": [
+      "right",
+      "down",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "id": 4,
+    "name": "温柔折返",
+    "chapter": 0,
+    "intent": "走过的路也可以再走。",
+    "rows": [
+      ".S.",
+      ".#.",
+      "..."
+    ],
+    "par": 4,
+    "solution": [
+      "right",
+      "down",
+      "left",
+      "up"
+    ]
+  },
+  {
+    "id": 5,
+    "name": "第一座花园",
+    "chapter": 0,
+    "intent": "把学会的转弯连成一座小花园。",
+    "rows": [
+      "..##.",
+      "..##.",
+      ".S...",
+      "#..##",
+      "#..##"
+    ],
+    "par": 8,
+    "solution": [
+      "left",
+      "up",
+      "right",
+      "down",
+      "right",
+      "up",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "id": 6,
+    "name": "林间分岔",
+    "chapter": 1,
+    "intent": "先观察岔路，想好从哪边绕回来。",
+    "rows": [
+      ".#...",
+      ".###.",
+      "..S..",
+      ".####",
+      "....."
+    ],
+    "par": 9,
+    "solution": [
+      "right",
+      "up",
+      "left",
+      "right",
+      "down",
+      "left",
+      "up",
+      "down",
+      "right"
+    ]
+  },
+  {
+    "id": 7,
+    "name": "回到来处",
+    "chapter": 1,
+    "intent": "有时，回头也是向前。",
+    "rows": [
+      "....#",
+      ".#...",
+      ".#...",
+      ".....",
+      "###S."
+    ],
+    "par": 8,
+    "solution": [
+      "up",
+      "left",
+      "down",
+      "right",
+      "down",
+      "up",
+      "left",
+      "down"
+    ]
+  },
+  {
+    "id": 8,
+    "name": "绕一个远路",
+    "chapter": 1,
+    "intent": "别急着去远处，看看身边有没有遗漏。",
+    "rows": [
+      ".####",
+      ".S.#.",
+      ".....",
+      "##...",
+      "#..##"
+    ],
+    "par": 10,
+    "solution": [
+      "right",
+      "left",
+      "up",
+      "down",
+      "right",
+      "up",
+      "down",
+      "left",
+      "down",
+      "left"
+    ]
+  },
+  {
+    "id": 9,
+    "name": "错落小径",
+    "chapter": 1,
+    "intent": "穿过窄口，再照顾另一边的花。",
+    "rows": [
+      ".##.#",
+      ".S...",
+      ".....",
+      "..#.#",
+      "....#"
+    ],
+    "par": 9,
+    "solution": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "left",
+      "up",
+      "down",
+      "right",
+      "up"
+    ]
+  },
+  {
+    "id": 10,
+    "name": "绿意成诗",
+    "chapter": 1,
+    "intent": "走慢一点，让每个角落都被看见。",
+    "rows": [
+      "....#",
+      "#S..#",
+      "..#.#",
+      "..#..",
+      "..##."
+    ],
+    "par": 12,
+    "solution": [
+      "right",
+      "left",
+      "down",
+      "left",
+      "up",
+      "right",
+      "up",
+      "left",
+      "right",
+      "down",
+      "right",
+      "down"
+    ]
+  },
+  {
+    "id": 11,
+    "name": "一滴露水",
+    "chapter": 2,
+    "intent": "在蓝色露珠处停下，才能向下拐进另一条小径。",
+    "rows": [
+      "S.O.",
+      "##.#",
+      "...."
+    ],
+    "par": 6,
+    "solution": [
+      "right",
+      "right",
+      "left",
+      "down",
+      "right",
+      "left"
+    ],
+    "dewRole": "required"
+  },
+  {
+    "id": 12,
+    "name": "停下来看看",
+    "chapter": 2,
+    "intent": "借露珠中途转弯，少绕一个圈。",
+    "rows": [
+      "#.###",
+      "..##.",
+      ".S...",
+      "..O#.",
+      "##..."
+    ],
+    "par": 9,
+    "solution": [
+      "right",
+      "up",
+      "down",
+      "left",
+      "up",
+      "left",
+      "up",
+      "right",
+      "up"
+    ],
+    "dewRole": "shortcut"
+  },
+  {
+    "id": 13,
+    "name": "露珠的邀请",
+    "chapter": 2,
+    "intent": "在露珠处停下，才能拐进那条小径。",
+    "rows": [
+      ".....",
+      "...##",
+      ".S.##",
+      "O....",
+      "...#."
+    ],
+    "par": 10,
+    "solution": [
+      "up",
+      "down",
+      "left",
+      "right",
+      "up",
+      "right",
+      "left",
+      "down",
+      "right",
+      "down"
+    ],
+    "dewRole": "required"
+  },
+  {
+    "id": 14,
+    "name": "转角有光",
+    "chapter": 2,
+    "intent": "找到露珠连接的近路，让转弯更从容。",
+    "rows": [
+      ".#...",
+      "..O.#",
+      "#....",
+      "#.#.S",
+      "....#"
+    ],
+    "par": 11,
+    "solution": [
+      "up",
+      "left",
+      "down",
+      "left",
+      "right",
+      "up",
+      "right",
+      "left",
+      "down",
+      "left",
+      "up"
+    ],
+    "dewRole": "shortcut"
+  },
+  {
+    "id": 15,
+    "name": "雨后的花园",
+    "chapter": 2,
+    "intent": "先经过露珠，再照顾平时会滑过的角落。",
+    "rows": [
+      ".O...",
+      "#.##.",
+      ".S..#",
+      ".##.#",
+      "....#"
+    ],
+    "par": 12,
+    "solution": [
+      "up",
+      "right",
+      "down",
+      "up",
+      "left",
+      "left",
+      "right",
+      "down",
+      "right",
+      "down",
+      "left",
+      "up"
+    ],
+    "dewRole": "required"
+  },
+  {
+    "id": 16,
+    "name": "月下回廊",
+    "chapter": 3,
+    "intent": "两滴露珠，连接两段无法直接转入的小径。",
+    "rows": [
+      ".O....",
+      "...##.",
+      ".###.O",
+      "......",
+      "###...",
+      "S...##"
+    ],
+    "par": 14,
+    "solution": [
+      "right",
+      "up",
+      "right",
+      "left",
+      "up",
+      "right",
+      "down",
+      "right",
+      "up",
+      "right",
+      "down",
+      "left",
+      "down",
+      "right"
+    ],
+    "dewRole": "required"
+  },
+  {
+    "id": 17,
+    "name": "交织的小径",
+    "chapter": 3,
+    "intent": "利用中途停靠，把绕路变成近路。",
+    "rows": [
+      "#.....",
+      "#...#.",
+      "....#.",
+      "...#..",
+      ".#..O#",
+      ".###.S"
+    ],
+    "par": 14,
+    "solution": [
+      "left",
+      "up",
+      "left",
+      "up",
+      "left",
+      "down",
+      "left",
+      "down",
+      "up",
+      "right",
+      "up",
+      "right",
+      "down",
+      "left"
+    ],
+    "dewRole": "shortcut"
+  },
+  {
+    "id": 18,
+    "name": "留一盏灯",
+    "chapter": 3,
+    "intent": "给每滴露珠安排一次有意义的转弯。",
+    "rows": [
+      ".#.#..",
+      "......",
+      "##O.#.",
+      "#.....",
+      "##...#",
+      "##..OS"
+    ],
+    "par": 16,
+    "solution": [
+      "left",
+      "left",
+      "up",
+      "up",
+      "down",
+      "right",
+      "down",
+      "right",
+      "up",
+      "left",
+      "right",
+      "up",
+      "left",
+      "down",
+      "left",
+      "up"
+    ],
+    "dewRole": "required"
+  },
+  {
+    "id": 19,
+    "name": "花开的方向",
+    "chapter": 3,
+    "intent": "让露珠帮你少走回头路，串起整座花园。",
+    "rows": [
+      "..#...",
+      "#.#S#.",
+      "....O.",
+      "..#..#",
+      "#.##.#",
+      "#...##"
+    ],
+    "par": 15,
+    "solution": [
+      "down",
+      "up",
+      "right",
+      "down",
+      "left",
+      "down",
+      "up",
+      "left",
+      "down",
+      "right",
+      "up",
+      "left",
+      "right",
+      "down",
+      "right"
+    ],
+    "dewRole": "shortcut"
+  },
+  {
+    "id": 20,
+    "name": "满园微光",
+    "chapter": 3,
+    "intent": "缺一滴露珠，都无法照顾到所有角落。",
+    "rows": [
+      "####..",
+      ".####.",
+      "......",
+      "..#.SO",
+      "#..#..",
+      "#.O..."
+    ],
+    "par": 16,
+    "solution": [
+      "down",
+      "up",
+      "left",
+      "up",
+      "down",
+      "right",
+      "down",
+      "right",
+      "up",
+      "down",
+      "right",
+      "up",
+      "left",
+      "right",
+      "up",
+      "left"
+    ],
+    "dewRole": "required"
+  }
+];if(typeof module!=="undefined"&&module.exports)module.exports=levels;else root.GardenLevels=levels;})(typeof window!=="undefined"?window:globalThis);
+</script>
+<script>(function(){
+'use strict';
+const E=window.GardenEngine,levels=window.GardenLevels,app=document.querySelector('#app'),modal=document.querySelector('#modal');
+const chapters=[{name:'初芽',sub:'从第一缕光开始'},{name:'寻径',sub:'每一次转弯都有意义'},{name:'听雨',sub:'停一停，也是一种前进'},{name:'盛放',sub:'让整座花园醒来'}];
+const arrows={left:'左',up:'上',down:'下',right:'右'},rotations={left:180,up:270,down:90,right:0};
+let saved,storageOK=true,campaignUpdated=false;try{const raw=JSON.parse(localStorage.getItem('glow-garden-v1')||'null');campaignUpdated=!!(raw&&raw.version!==2&&raw.best&&Object.keys(raw.best).some(k=>/^(?:1[1-9])$/.test(k)));saved=E.cleanSave(raw);}catch{saved=E.cleanSave(null);storageOK=false;}
+let current=null,view='home',epoch=0,busy=false,history=[],started=0,hints=0,toastTimer,audio=null;
+const icon=(name,cls='')=>`<svg aria-hidden="true" class="${cls}"><use href="#${name}"/></svg>`;
+const flower=()=>icon('bloom','flower');
+function persist(){try{localStorage.setItem('glow-garden-v1',JSON.stringify(saved));storageOK=true;}catch{if(storageOK){storageOK=false;toast('当前浏览器无法保存记录，仍可继续游玩。');}}}
+function toast(text){const el=document.querySelector('#toast');el.textContent=text;el.classList.add('visible');clearTimeout(toastTimer);toastTimer=setTimeout(()=>el.classList.remove('visible'),2700);}
+function syncSound(){const b=document.querySelector('.sound-toggle');b.setAttribute('aria-pressed',String(saved.sound));b.setAttribute('aria-label',saved.sound?'关闭声音':'开启声音');}
+function tone(frequency=450,duration=.10){if(!saved.sound)return;try{audio??=new(window.AudioContext||window.webkitAudioContext)();if(audio.state==='suspended')audio.resume().catch(()=>{});const o=audio.createOscillator(),gain=audio.createGain();o.type='sine';o.frequency.value=frequency;gain.gain.setValueAtTime(.035,audio.currentTime);gain.gain.exponentialRampToValueAtTime(.001,audio.currentTime+duration);o.connect(gain);gain.connect(audio.destination);o.start();o.stop(audio.currentTime+duration);}catch{}}
+function resetView(){epoch++;busy=false;history=[];if(modal.open)modal.close();window.scrollTo({top:0,behavior:'instant'});}
+function home(){resetView();view='home';current=null;const done=Object.keys(saved.best).length;const mini=['fffff','f##ff','fff#d','f##dd','ffdds'];
+ app.innerHTML=`<section class="home screen-enter"><div class="hero"><div class="hero-copy"><p class="eyebrow">A LITTLE LIGHT. A LITTLE LIFE.</p><h1>把一点微光，<br>种成<em>一座花园。</em></h1><p class="hero-description">滑动光种，唤醒沿途的小花。<br>不必赶时间，下一次转弯，总会有新的风景。</p><div class="hero-actions"><button class="primary" data-action="start">${done?'继续种下微光':'开始点亮'}${icon('arrow')}</button><button class="secondary" data-action="levels">选择小花园</button></div><div class="home-meta"><span id="home-progress">${done?`已点亮 ${done} / 20 座花园`:'20 座小花园'}</span><span>随时停下 · 慢慢开花</span></div></div><div class="hero-art" aria-hidden="true"><div class="art-ring"></div><span class="art-badge">THE QUIET COLLECTION</span><span class="art-moon"></span><svg class="botanical left"><use href="#sprout"/></svg><svg class="botanical right"><use href="#sprout"/></svg><span class="floating-spark spark1">✧</span><span class="floating-spark spark2">✧</span><div class="mini-garden">${mini.join('').split('').map(c=>`<span class="mini-tile ${c==='#'?'empty':c==='d'?'dark':''}">${c==='f'?flower():c==='s'?'<i class="mini-seed"></i>':''}</span>`).join('')}</div><p class="art-caption">让每一格小小的土地，都有光。</p></div></div><div class="chapter-strip">${chapters.map((c,i)=>`<div class="chapter"><span class="chapter-number">0${i+1}</span><div><strong>${c.name}</strong><small>${String(i*5+1).padStart(2,'0')}—${(i+1)*5} 关 · ${c.sub}</small></div></div>`).join('')}</div></section>`;
+}
+function startLevel(index){if(!Number.isInteger(index)||index<0||index>=levels.length)return;resetView();view='playing';const level=levels[index],board=E.createBoard(level.rows);current={index,level,board,state:E.createState(board)};saved.last=index;persist();hints=0;started=performance.now();
+ app.innerHTML=`<section class="game screen-enter"><div class="game-top"><button class="back-link" data-action="home">${icon('arrow')}回到花园</button><button class="chapter-pill" data-action="levels">第 ${level.chapter+1} 章 · ${chapters[level.chapter].name}　⌘</button></div><div class="game-layout"><div class="level-info"><p class="level-kicker">LITTLE GARDEN / 20</p><h1 class="level-heading"><span id="level-number">${String(index+1).padStart(2,'0')}</span>${level.name}</h1><p class="level-intent">${level.intent}</p><div class="level-stats"><div class="stat"><label>已开花</label><strong><span id="flower-count">1</span><small> / ${board.cells.length}</small></strong></div><div class="stat"><label>步数</label><strong id="move-count">0</strong></div></div><div class="garden-progress" role="progressbar" aria-label="花园点亮进度" aria-valuemin="0" aria-valuemax="${board.cells.length}" aria-valuenow="1"><span id="progress-fill"></span></div><div class="legend"><span><i></i>光种</span><span><i class="stop-dot"></i>${index>=10?'露珠停靠点':'轻轻滑动，直到尽头'}</span></div></div><div class="game-card"><div class="board-head"><span>SLIDE, WANDER & BLOOM</span>${icon('sprout')}</div><div class="garden-frame"><div id="board" class="board" role="group" tabindex="0" aria-label="花园棋盘。在棋盘上向上下左右滑动，或使用下方方向按钮。" data-busy="false" style="--cols:${board.width};--rows:${board.height}"></div></div><p id="live-message" class="board-hint" aria-live="polite">${index===0?'向右滑动，让第一排小花醒来。':index===10?'遇到蓝色露珠会停下；再滑一次继续走。':'在棋盘上滑动，或轻点下方方向键。'}</p><div class="direction-pad" aria-label="移动方向">${Object.keys(arrows).map(d=>`<button data-dir="${d}" aria-label="向${arrows[d]}移动" title="向${arrows[d]}移动"><svg style="transform:rotate(${rotations[d]}deg)" aria-hidden="true"><use href="#arrow"/></svg></button>`).join('')}</div><div class="tools"><button data-action="undo" disabled>${icon('undo')}撤回</button><button data-action="restart">${icon('restart')}重来</button><button data-action="hint">${icon('hint')}一点提示</button></div></div></div></section>`;
+ const el=document.querySelector('#board');
+ board.rows.forEach((row,y)=>[...row].forEach((ch,x)=>{const tile=document.createElement('div'),id=board.lookup.get(y*board.width+x);tile.className='tile'+(id===undefined?' blocked':board.cells[id].stop?' stop':'');if(id!==undefined){tile.dataset.cell=id;tile.innerHTML='<span class="bud"></span>';}el.appendChild(tile);}));
+ const seed=document.createElement('span');seed.className='seed';seed.setAttribute('aria-hidden','true');el.appendChild(seed);paint(current.state);bindSwipe(el);
+}
+function paint(state,newId=null){if(!current||view!=='playing')return;const el=document.querySelector('#board');if(!el)return;for(const cell of current.board.cells){const tile=el.querySelector(`[data-cell="${cell.id}"]`),lit=!!(state.mask&(1<<cell.id));if(lit!==tile.classList.contains('lit')){tile.classList.toggle('lit',lit);tile.innerHTML=lit?flower():'<span class="bud"></span>';tile.classList.toggle('just-lit',lit&&newId===cell.id);}}
+ const cell=current.board.cells[state.position];el.style.setProperty('--x',cell.x);el.style.setProperty('--y',cell.y);document.querySelector('#flower-count').textContent=E.count(state.mask);document.querySelector('#move-count').textContent=state.steps;document.querySelector('#progress-fill').style.width=(E.count(state.mask)/current.board.cells.length*100)+'%';document.querySelector('.garden-progress').setAttribute('aria-valuenow',E.count(state.mask));document.querySelector('[data-action="undo"]').disabled=!history.length||busy;
+}
+const wait=ms=>new Promise(resolve=>setTimeout(resolve,ms));
+async function move(direction){if(view!=='playing'||!current||busy||modal.open||current.state.complete)return;const before=current.state,next=E.slide(current.board,before,direction),el=document.querySelector('#board');if(!next.moved){el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump');message('这边到尽头了，试试换个方向。');return;}
+ busy=true;el.dataset.busy='true';const token=epoch;history.push(before);document.querySelectorAll('.hinted').forEach(b=>b.classList.remove('hinted'));let mask=before.mask;const reduced=matchMedia('(prefers-reduced-motion: reduce)').matches;
+ for(const id of next.path){if(token!==epoch)return;const fresh=!(mask&(1<<id));mask|=1<<id;paint({...next,position:id,mask},fresh?id:null);if(fresh)tone(380+E.count(mask)*18,.075);await wait(reduced?0:65);}
+ if(token!==epoch)return;current.state=next;busy=false;el.dataset.busy='false';paint(next);message(next.complete?'每一朵小花，都收到了你的光。':current.board.cells[next.position].stop?'停在露珠上了。换个方向，或继续向前。':`还有 ${current.board.cells.length-E.count(next.mask)} 格小径，等你来点亮。`);
+ if(next.complete){await wait(reduced?0:420);if(token===epoch)result();}
+}
+function message(text){const el=document.querySelector('#live-message');if(el)el.textContent=text;}
+function undo(){if(!current||view!=='playing'||busy||!history.length)return;current.state=history.pop();paint(current.state);message('退回一步，给自己另一种可能。');}
+function hint(){if(!current||view!=='playing'||busy||current.state.complete)return;const path=E.solve(current.board,current.state);if(!path?.length){message('试试撤回几步，或重新出发，换一条路线。');return;}hints++;const d=path[0];document.querySelectorAll('.hinted').forEach(b=>b.classList.remove('hinted'));document.querySelector(`[data-dir="${d}"]`).classList.add('hinted');message(`一点提示：试试向${arrows[d]}滑动。`);}
+function result(){if(!current||!current.state.complete||view!=='playing')return;view='result';const {index,level,state}=current;const rating=E.stars(state.steps,level.par),seconds=Math.max(1,Math.round((performance.now()-started)/1000)),last=index===19;saved=E.recordWin(saved,index,state.steps);persist();tone(660,.3);
+ app.innerHTML=`<section id="result" class="result screen-enter"><p class="eyebrow">${last?'THE GARDEN IS AWAKE':'A LITTLE GARDEN, IN BLOOM'}</p><div class="result-art" aria-hidden="true">${flower()}<span class="result-spark">✧</span></div><h1 id="result-title">${last?'满园微光，因你而亮。':'这座花园，开花了。'}</h1><p class="result-subtitle">${last?'走过最后一条小径，也别忘了回头看看。':`第 ${String(index+1).padStart(2,'0')} 座 · ${level.name}<br>每一次小小的前进，都值得被看见。`}</p><div class="stars" aria-label="获得${rating}颗星">${[1,2,3].map(i=>icon('star',i>rating?'unearned':'')).join('')}</div><div class="result-stats"><div><strong>${state.steps}</strong><span>本次步数</span></div><div><strong>${level.par}</strong><span>三星目标</span></div><div><strong>${seconds<60?seconds+'″':Math.floor(seconds/60)+'′'+String(seconds%60).padStart(2,'0')+'″'}</strong><span>花开用时</span></div></div><div class="result-actions"><button class="secondary" data-action="replay">再逛一遍</button><button class="primary" data-action="${last?'finish':'next'}">${last?'回望我的花园':'下一座小花园'}${icon('arrow')}</button></div><p class="result-note">已点亮 ${Object.keys(saved.best).length} / 20 座花园${storageOK?' · 进度已保存在本机':' · 本次进度暂无法保存'}<br>${rating===3?'刚刚好的路线，刚刚好的你。':'花开就很美。也可以少绕几步，再试一次。'}</p><button class="small-link" data-action="levels">看看所有小花园</button></section>`;window.scrollTo({top:0,behavior:'instant'});
+}
+function openModal(kind){document.querySelector('#modal-title').textContent=kind==='levels'?'选一座小花园':'让微光，沿途开花';document.querySelector('#modal-body').innerHTML=kind==='levels'?`<p class="modal-intro">四段小旅程，二十次花开。可以按顺序慢慢走，也可以挑一座喜欢的花园。</p>${chapters.map((c,ch)=>`<section class="level-group"><h3>0${ch+1} / ${c.name} <span style="color:var(--muted);font-size:10px">　${c.sub}</span></h3><div class="level-grid">${levels.slice(ch*5,ch*5+5).map(l=>`<button class="level-tile ${saved.best[l.id-1]?'completed':''}" data-level="${l.id-1}" aria-label="第${l.id}关 ${l.name}">${String(l.id).padStart(2,'0')}<small>${saved.best[l.id-1]?'★'.repeat(E.stars(saved.best[l.id-1],l.par)):'·'}</small></button>`).join('')}</div></section>`).join('')}`:`<p class="modal-intro">你是一颗小小的光种。经过的土地会开花，把每一格小径点亮，就能唤醒这座花园。</p><div class="help-step"><b>01</b><div><strong>滑一下，一直走到尽头</strong><p>在棋盘上向上下左右滑动。光种会直行，直到遇到边界或青苔。也可以点方向按钮，电脑上可用方向键或 WASD。</p></div></div><div class="help-step"><b>02</b><div><strong>走过的路，也能再走</strong><p>花不会消失，不必一笔画完。随时撤回、重来，或要一点提示。没有倒计时，也没有步数失败。</p></div></div><div class="help-step"><b>03</b><div><strong>第 11 关，遇见露珠</strong><p>蓝色圆环是停靠点，光种经过就会停下。下一次滑动时，可以换个方向，也可以继续向前。</p></div></div><p class="help-footer">完成即得一星；接近最短路线得两星；达到最短步数得三星。提示不扣星。声音默认关闭，可在右上角开启。进度仅保存在当前浏览器。</p>`;if(!modal.open)modal.showModal();}
+function bindSwipe(el){let pointer=null;el.addEventListener('pointerdown',e=>{if(e.isPrimary===false||e.button!==0)return;pointer={id:e.pointerId,x:e.clientX,y:e.clientY};el.setPointerCapture(e.pointerId);});el.addEventListener('pointerup',e=>{if(!pointer||pointer.id!==e.pointerId)return;const dx=e.clientX-pointer.x,dy=e.clientY-pointer.y;pointer=null;if(Math.max(Math.abs(dx),Math.abs(dy))<22)return;move(Math.abs(dx)>Math.abs(dy)?dx>0?'right':'left':dy>0?'down':'up');});el.addEventListener('pointercancel',()=>{pointer=null;});}
+document.addEventListener('click',e=>{const b=e.target.closest('button');if(!b||b.disabled)return;if(b.dataset.dir){move(b.dataset.dir);return;}if(b.dataset.level!==undefined){startLevel(Number(b.dataset.level));return;}switch(b.dataset.action){case 'home':case 'finish':home();break;case 'start':startLevel(saved.last);break;case 'levels':openModal('levels');break;case 'help':openModal('help');break;case 'close':modal.close();break;case 'undo':undo();break;case 'restart':case 'replay':if(current)startLevel(current.index);break;case 'hint':hint();break;case 'next':if(current)startLevel(current.index+1);break;case 'sound':saved.sound=!saved.sound;persist();syncSound();tone();toast(saved.sound?'声音已开启':'声音已关闭');break;}});
+modal.addEventListener('click',e=>{if(e.target===modal){const r=modal.getBoundingClientRect();if(e.clientX<r.left||e.clientX>r.right||e.clientY<r.top||e.clientY>r.bottom)modal.close();}});
+document.addEventListener('keydown',e=>{if(view!=='playing'||modal.open||e.repeat)return;const dirs={ArrowUp:'up',ArrowDown:'down',ArrowLeft:'left',ArrowRight:'right',w:'up',s:'down',a:'left',d:'right'};if(dirs[e.key]){e.preventDefault();move(dirs[e.key]);}else if(e.key.toLowerCase()==='z'){undo();}});
+home();syncSound();if(campaignUpdated){persist();toast('第12—20关已重新设计，旧关纪录已重置；前11关纪录保留。');}
+})();
+</script>
+</body></html>
